@@ -95,8 +95,6 @@ jupyter-console==6.1.0
 jupyter-core==4.6.1
 jupyterlab==1.2.6
 jupyterlab-server==1.0.6
-Keras==2.4.3
-Keras-Preprocessing==1.1.2
 keyring==21.1.0
 kiwisolver==1.1.0
 lazy-object-proxy==1.4.3
@@ -236,8 +234,6 @@ tables==3.6.1
 tblib==1.6.0
 tensorboard==2.2.2
 tensorboard-plugin-wit==1.7.0
-tensorflow==2.2.0
-tensorflow-estimator==2.2.0
 termcolor==1.1.0
 terminado==0.8.3
 testpath==0.4.4
