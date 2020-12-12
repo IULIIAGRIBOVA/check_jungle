@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Cover Template · Bootstrap</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <script type="text/javascript" src="/static/t12.js"></script>
+    <script>
+           function hello() {
+               document.querySelector('#PageText').innerHTML = '';
+               document.querySelector('#PageURL').innerHTML = '';
+               document.querySelector('#Loader').style.display = "block";
+              }
+    </script>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicons -->
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+     .loader {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+        text-align: center;
+      }
+
+      @keyframes spin {
+         0% { transform: rotate(0deg); }
+         100% { transform: rotate(360deg); }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+  </head>
+
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">Привет! Это очень простой сайт</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link active" href="/">Home</a>
+        <a class="nav-link" href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main role="main" class="inner cover">
+    <div class = "container mt-5">
+        <h2>Проверьте, на какой странице вы в поиске на AudioJungle</h2>
+        <br>
+        <form >
+            <input type = "text" name = "SearchPage" id = "SearchPage" class="form-control" placeholder = "Введите URL адрес страницы с поиском"><br>
+            <input type = "text" name = "AuthorName" id = "AuthorName" class="form-control" placeholder = "Введите ваше название на AudioJungle"><br>
+            <input type = "text" name = "TrackName" id = "TrackName" class="form-control" placeholder = "Введите название трека"><br>
+            <input type = "submit"  class="btn btn-warning " onclick="hello()" value = "Check!"><br>
+        </form>
+        <br>
+    </div>
+
+    <center><div class="loader" id = 'Loader' style="display:none;" role="alert"></div></center>
+
+    <h1 class="cover-heading" id = 'PageText'>{{ PageText }}</h1>
+      <a id = 'PageURL' href = "#" target="_blank"> {{PageURL}}</a>
+
+
+    <br>
+    <br>
+    <p class="lead">Сайт создан чтобы немного облегчить людям жизнь:)</p>
+  </main>
+
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+      <p> By Julia Gribova</p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
+
