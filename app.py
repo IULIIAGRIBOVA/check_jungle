@@ -4,15 +4,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    #return "<h1>Not Much Going On Here</h1>"
-    #if request.method == "POST":
-    #    Search_url = request.form['SearchPage']
-    #    AuthorName = request.form['AuthorName']
-    #    TrackName  = request.form['TrackName']
-    #    PageText, PageURL = my_jj_jungle(Search_url, AuthorName, TrackName)
-    #    return render_template("home.html", PageText = PageText, PageURL = PageURL)
-    #else:
-    #   return render_template("home.html")
     return render_template("home.html")
 
 
@@ -36,9 +27,9 @@ def process():
     return jsonify({'PageText' : Missing, 'PageURL':PageURL, 'PageURLLink':PageURL,'Error' : True})
 
 
-@app.route("/about")
-def succes():
-    return render_template("index.html")
+@app.route("/contact")
+def contact_me():
+    return render_template("contact.html")
 
 if __name__ == '__main__':
 	app.run(debug=True)

@@ -117,38 +117,45 @@ def my_jj_jungle(Search_url, AuthorName, TrackName):
         return f'Не заполнено название трека', link
 
 
-    response = requests.get(Search_url, headers=headers).text
+    try:
+        response = requests.get(Search_url, headers=headers).text
 
-    while flag_next == 1 and count < NumPages:
 
-        soup = bs(response, 'lxml')
-        music_block = soup.find('div', {'class': "page"})
-        music_list = music_block.find_all('li', {'class': '_1cn3x'})
+        while flag_next == 1 and count < NumPages:
 
-        for music_item in music_list:
-            music_name = music_item.find('a', {'class': 'R8zaM'}).text
-            music_name = music_name.strip()
-            if music_name.upper() == AuthorName.upper():
-                song_name = music_item.find('a', {'class': '_2Pk9X'}).text
-                song_name = song_name.strip()
-                if song_name.upper() == TrackName.upper():
-                    flag_next = 0
-                    break
+            soup = bs(response, 'lxml')
+            music_block = soup.find('div', {'class': "page"})
+            music_list = music_block.find_all('li', {'class': '_1cn3x'})
 
-        next_button = soup.find_all('a', {'data-test-selector': 'paginationNext'})
-        if flag_next == 0:
-            break
+            for music_item in music_list:
+                music_name = music_item.find('a', {'class': 'R8zaM'}).text
+                music_name = music_name.strip()
+                if music_name.upper() == AuthorName.upper():
+                    song_name = music_item.find('a', {'class': '_2Pk9X'}).text
+                    song_name = song_name.strip()
+                    if song_name.upper() == TrackName.upper():
+                        flag_next = 0
+                        break
+
+
+            next_button = soup.find_all('a', {'data-test-selector': 'paginationNext'})
+            if flag_next == 0:
+                break
+            if len(next_button) == 0:
+                flag_next = 0
+            else:
+                link = main_link + next_button[0]['href']
+                response = requests.get(link, headers=headers).text
+                count += 1
         if len(next_button) == 0:
-            flag_next = 0
+            link=''
+            return f'Сожалеем, но ваш трек не найден на {count}-ти страницах. Попробуйте перепроверить названия:)', link
         else:
-            link = main_link + next_button[0]['href']
-            response = requests.get(link, headers=headers).text
-            count += 1
-    if len(next_button) == 0:
-        link=''
-        return f'Сожалеем, но ваш трек не найден на {count}-ти страницах. Попробуйте перепроверить названия:)', link
-    else:
-        return f'Вы на {str(count)}-й странице:', link
+            return f'Вы на {str(count)}-й странице:', link
+    except:
+        link = ''
+        return f'Что-то пошло не так, возможно неверный URL поиска', link
+
 
 
 
